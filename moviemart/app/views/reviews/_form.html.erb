@@ -1,0 +1,18 @@
+<h2>Reviews:</h2>
+<% if user_signed_in? %>
+	<%= form_for :review, url: reviews_path do |f| %>
+  <p>
+    <%= f.text_area :review_text %>
+    <%= f.text_field :movie_id, :value => movie_id, :hidden => true %>
+  </p>
+  <p>
+    <%= f.submit("Submit") %>
+  </p>
+<% end %>
+<% end %>
+<% reviews = Review.where(:movie_id => movie_id).order(id: :desc) %>
+<% reviews.each do |r| %>
+	<p><% u = User.find(r.user_id) %><%= u.username || u.email %>: <%= r.review_text %></p>
+<% end %>
+
+

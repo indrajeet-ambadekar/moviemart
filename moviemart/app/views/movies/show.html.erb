@@ -1,0 +1,7 @@
+<h2>Movies</h2>
+
+<p>
+<%= @movie.title %><br/>
+<%= link_to("like","#") %> | <%= link_to("dislike","#") %>
+<%= render '/reviews/form', :movie_id => @movie.id %>
+</p>
