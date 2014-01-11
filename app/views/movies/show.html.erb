@@ -1,0 +1,150 @@
+<div class="container">
+<% if user_signed_in? %>
+<% viewer = Viewer.find_by(:user_id => current_user[:id], :movie_id => @movie.id) %>
+<% if viewer != nil %>
+<% if viewer.like == 0 %>
+<p><%= link_to "Like", :action => :index, :method => :get, :what => "updatelike", :movie_id => @movie.id %>
+<%= link_to "No Dislike", :action => :index, :method => :get, :what => "nodislike", :movie_id => @movie.id %></p>
+<% elsif viewer.like == 1 %>
+<p><%= link_to "Unlike", :action => :index, :method => :get, :what => "unlike", :movie_id => @movie.id %>
+<%= link_to "Dislike", :action => :index, :method => :get, :what => "updatedislike", :movie_id => @movie.id %></p>
+<% end %>
+<% else %>
+<p><%= link_to "Like", :action => :index, :method => :get, :what => "like", :movie_id => @movie.id %> 
+<%= link_to "Dislike", :action => :index, :method => :get, :what => "dislike", :movie_id => @movie.id %></p>
+<% end %>
+
+<% end %>
+
+
+</div>
+
+<header class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-4">
+						<div class="row">
+							<div class="col-xs-3">
+								<div class="row">
+									<div class="col-xs-2"></div>
+									<div class="col-xs-10 menu-bar text-center">
+										<i class="fa fa-bars"></i>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-9 logo-text">
+								<%= link_to "Moviemart.com", home_path, :class=>'logo-text' %>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-5 search-bar">
+						<div class="input-group">
+ 							 <input type="text" class="form-control search-input">
+  							<span class="input-group-addon search-lens-box"><span class="glyphicon glyphicon-search search-lens"></span></span>
+						</div>
+					</div> <!-- search bar -->
+					<div class="col-xs-3">
+						<div class="row">
+							<div class="col-xs-8 text-center social">
+								<span class="fa fa-facebook social-icons"></span>
+								<span class="fa fa-twitter social-icons"></span>
+								<span class="fa fa-google-plus social-icons"></span>
+							</div> <!-- Social icons -->
+							<div class="col-xs-4 user">
+								<span class="glyphicon glyphicon-user social-icons"></span>
+							</div>
+						</div>
+					</div> <!-- User  -->
+				</div>
+			</div>
+		</header> <!-- header -->
+		<div class="content">
+			<div class="container">
+				<div class="row banner">
+					<div class="video-icon"></div>
+					<div class="col-xs-4 movie-detail">
+						<div class="row">
+							<div class="col-xs-2"></div>
+							<div class="col-xs-10 movie-title">
+								<span><%= @movie.title %></span>
+							</div>
+						</div>
+						<div class="row movie-cast cast">
+							<div class="col-xs-5 movie-cat-head">Cast</div>
+							<div class="col-xs-7 movie-cat-detail"><%= @movie.cast %></div>
+						</div>
+						<div class="row movie-cast">
+							<div class="col-xs-5 movie-cat-head">Year of release</div>
+							<div class="col-xs-7 movie-cat-detail"><%= @movie.year %></div>
+						</div>
+						<div class="row movie-cast">
+							<div class="col-xs-5 movie-cat-head">Language</div>
+							<div class="col-xs-7 movie-cat-detail"><%= @movie.category.capitalize %></div>
+						</div>
+						<div class="row movie-cast">
+							<div class="col-xs-5 movie-cat-head">Directed by</div>
+							<div class="col-xs-7 movie-cat-detail"><%= @movie.director %></div>
+						</div>
+					</div><!--  Movie - detail -->
+					
+					<div class="col-xs-1 social-activity">
+						<% if user_signed_in? %>
+							<div class="soc-act fb-like"></div>
+							<div class="soc-act fb-dislike"></div>
+							<div class="soc-act fb-share"></div>
+						<% end %>
+					</div>
+					
+					<div class="col-xs-7 movie-poster">
+						
+					</div><!--    movie poster   -->
+				</div>
+			</div>
+		</div> <!-- Content -->
+		<div class="statistics">
+			<div class="container">
+				<div class="row stats">
+					<div class="stat-icon"></div>
+				</div>
+			</div>
+		</div>  <!-- Statistics -->
+		<div class="quote-bar">
+			<div class="container">
+			<div class="row quotation">
+				<div class="col-xs-12">
+				<div class="quote-icon"></div>
+					<!-- <span class="quote-icon">
+						<i class="fa fa-quote-left fa-quote"></i>
+					</span> -->
+
+					<span class="quote">
+						" If you don't like something change it. If you can't change it, change the way you 
+						think about it "  - Stephen chowbusky
+					</span>
+				</div>
+			</div>
+			</div>
+		</div>
+		<%= render '/reviews/form', :movie_id => @movie.id %>
+		<div class="footer-bar">
+		<div class="container">
+			<div class="row footer">
+				<div class="col-md-12 copy-text">
+					<span class="copyright">
+						<img  src="/assets/copy.png">
+						Copyrights 2014 <a href="#">@codingmart.com</a>
+					</span>	
+					<span class="footer-text">
+						<span class="foot-line pull-right">
+							<a href="#" class="border-side">Home</a>
+
+							<a href="#" class="border-side">About us</a>
+
+							<a href="#">Contact us</a>
+
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+		</div>

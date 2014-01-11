@@ -1,0 +1,53 @@
+
+
+<% reviews = Review.where(:movie_id => movie_id).order(id: :desc) %>
+<% back = ['seagreen-bg', 'purple-bg', 'yellow-bg', 'green-bg', 'blue-bg'] %>
+
+<div class="container">
+		<div class="row statis">
+			<!-- <div class="col-xs-1"></div> -->
+			<div class="col-xs-12 review-check">
+				<div class="public-reviews">
+				<div class="post-comment">
+					<% if user_signed_in? %>
+					
+					<% end %>
+					<% if user_signed_in? %>
+					<%= form_for :review, url: reviews_path do |f| %>
+					<p>
+						<%= f.text_area :review_text, :class=>'text-area' %>
+						<%= f.text_field :movie_id, :value => movie_id, :hidden => true %>
+					</p>
+					<p>
+						<button type="submit" class="reply">LEAVE A REVIEW</button>
+					</p>
+					<% end %>
+					<% end %>
+				</div>
+				<div class="public-title">Public Reviews</div>
+
+
+					<div class="all-reviews">
+					<% reviews.each do |r| %>
+						<div class="each-review">
+							<%=
+							raw("<div class='img-holder #{back[rand(4)]}''><img src='/assets/public-reviews-img.png'/></div>")
+							%>
+							<div class="details">
+								<div class="detail-title">
+									<span class="name"><% u = User.find(r.user_id) %><%= u.username || u.email %></span>
+									<span class="days">2 days</span>
+								</div>
+								<div class="msg"><%= r.review_text %></div>
+							</div>
+						</div>
+						<% end %>
+					</div>
+					
+				</div>
+			</div>
+
+			<!-- <div class="col-xs-1"></div> -->
+
+		</div>
+		</div>
