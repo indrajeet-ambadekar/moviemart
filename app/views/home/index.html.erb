@@ -1,2 +1,345 @@
-<h1>Main Page</h1>
-<p>Search Field Will be here.</p>
+<head>
+		<title>Movie Revies</title>
+		<%= javascript_include_tag "jquery_1_10_2" %>
+    	<%= javascript_include_tag "jquery.cycle.all" %>
+    	<%= javascript_include_tag "jquery-welcome" %>
+
+    	<style>
+			@font-face {
+	font-family: 'icomoon';
+	src:url('/assets/fonts/icomoon.eot');
+	src:url('/assets/fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+	url('/assets/fonts/icomoon.woff') format('woff'),
+	url('/assets/fonts/icomoon.ttf') format('truetype'),
+	url('/assets/fonts/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.icon-google-plus, .icon-facebook, .icon-twitter, .icon-user{
+    font-weight: bold;
+    padding-top: 10px;
+    padding-left: 15px;
+    font-size: 18px
+}
+.icon-google-plus:before {
+	content: "\e600";
+}
+.icon-facebook:before {
+	content: "\e601";
+}
+.icon-twitter:before {
+	content: "\e602";
+}
+.icon-user:before {
+	content: "\e603";
+}
+
+.container{
+	width: 100%;
+	background-image: url("\assets\bing.jpg");
+	padding: 0%;
+	font-family: "Lato";
+}
+header{
+	width:100%;
+	z-index: 100;
+	height: 35px;
+	background-color:#3a6896;
+	position: fixed; 
+}
+header a{
+	margin-top: 7px;
+	font-size: 16px;
+	vertical-align: top;
+	width:22px;
+	color: #fff;
+}
+header span.status{
+	margin-top: 7px;
+	font-size: 16px;
+	vertical-align: top;
+	color: #fff;
+}
+header a:hover{
+	text-decoration: none;
+}
+.mid-container{
+	position: fixed;
+	opacity: 0.9;
+	z-index: 100;
+}
+.image-hor{
+	background-color: #F6EAEA;
+	padding: 0px; 
+	outline: #FCFAFA solid 0px;
+}
+
+.row{
+	text-align: center;
+	display: inline-block;
+	padding: 0px;
+	margin: 0px;
+}
+.col-md-1, .col-md-2{
+	
+}
+.slid-background{
+	padding: 0px;
+	margin: 0px;
+}
+.search-bar{
+	z-index: 200;
+	font-weight: bold;
+	display: inline-block;
+	top:65%;
+	left: 10%;
+	width: 60%;
+	right: 0%;
+	height: 9%;
+	font-size: 13px;
+	text-align: center;
+	opacity: 0.8;
+	position: fixed;
+	border: 0px;
+}
+.row{
+   margin: 0px;
+   padding: 0px;	
+}
+.search-bar .search-field{
+	vertical-align: middle;
+	opacity:0.99;
+	color: #fff;
+	background: #428bca;
+	border:4px solid #2a2a2a;
+	border-radius: 3px;
+	text-align: center;
+	font-size: 25px;
+	width: 100%;
+}
+.row ul{
+	padding: 0px;
+	margin: 0px;
+	outline: 0px;
+}
+.glyphicon-search{
+	width: 9%;
+	height: 100%;
+	padding-left: 10px;
+	margin-left: -6px;
+	background: #428bca;
+	vertical-align: middle;
+}
+.search-bar .search-field input{
+	outline: 0px;
+	text-align: left;
+	border:0px;
+	opacity:0.9;
+	height: 47px;
+	width: 90%;
+	font-style: italic;
+	margin-left: -6px;
+	background-color: #f8f8f8;
+	padding: 5px;	
+}
+.footer{
+	display: inline-block;
+	text-align: right;
+	z-index: 2;
+	background: #3a6896;
+	position: fixed;
+	bottom: 0%;
+	left: 0%;
+	right: 0%;
+	padding-top: 20px;
+	padding-right: 20px;
+	height: 10%;
+	width: 100%;
+	display: inline-block;
+}
+.img-block-1, .img-block-2,.img-block-3,.img-block-4{
+	position:fixed;
+	top: 0%;
+	bottom:0%;
+	width: 25%;
+}
+.img-block-2{
+	left: 25%;
+}
+.img-block-3{
+	left: 50%;
+}
+.img-block-4{
+	left: 75%;
+}
+
+.first{
+	width: 100%;   
+}
+.second{
+	width:100%;   
+}
+ul{
+	top:35px;
+	padding: 0px;
+	margin: 0px;
+	outline: 0px;
+}
+li{
+	position: fixed;
+	top:35px;
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	width:100%; 
+	list-style: none;
+}
+
+footer{
+	position: fixed;
+	background: #3a6896;
+	height: 35px;
+	width: 100%;
+	bottom: 0px;
+	z-index: 100;
+	text-align: center;
+	padding-top: 7px;
+}
+footer a{
+	color: white;
+}
+a:hover{
+	text-decoration: none;
+	font-weight: bold;
+	color: #fff;
+}
+
+    	</style>
+	</head>
+	<body>
+		<div class="container">
+			<header class="row" >
+			<% if !user_signed_in? %>
+				<a href="/auth/gplus" class="col-xs-1"><span class="icon-google-plus"></span>&nbsp&nbspLogin</a>
+				<a href="/auth/facebook" class="col-xs-1"><span class="icon-facebook"></span>&nbspLogin</a>
+				<a href="#" class="col-xs-1"><span class="icon-twitter"></span>&nbspLogin</a>
+				<a href="#" class="col-xs-2"  data-toggle='modal' data-target='#myModal' style="text-align:left;"><span class="icon-user"></span> Login</a>
+				<a href="#" class="col-xs-5"></a>
+				
+				<a href="#" class="col-xs-2" data-toggle='modal' data-target='#registerModal' style="text-align:right;"><span class="icon-user"></span>&nbsp&nbspRegister</a>
+				<% else %>
+				<a href="#" class="col-xs-1"></a>
+				<a href="#" class="col-xs-1"></a>
+				<a href="#" class="col-xs-1"></a>
+				<a href="#" class="col-xs-2" style="text-align:left;"></a>
+				<a href="#" class="col-xs-3"></a>
+				
+				<span class="col-xs-4 status">Welcome <%= current_user.username || current_user.email %>  |  <%= link_to "Logout", destroy_user_session_path, method: :delete %></span>
+			<% end %>
+			</header>
+			<div class="slid-backgrounds">
+				<ul class=" img-block image-hor">
+				   <li class="image-hor">
+				     <img src="/assets/bing.jpg" class="img-responsive image-hor" />
+				   </li>
+				   
+			    </ul>
+			</div>
+			<div class="row mid-container">
+			<div class="results col-xs-8"></div>
+			<div class="todays-review col-xs-4"></div>
+			</div>
+			<div class="search-bar row">
+			    <span class="search-field row">
+			   <input type="text" class="" 
+			   name="Search Movie" placeholder="Search Movie..." />
+			   <span class="glyphicon glyphicon-search">
+				</span>
+			   </span>
+			</div>
+			<footer class="nav nav-tabs">
+			    <a href="" class="col-xs-10"></a>
+			    <a href="#" class="col-xs-1" >About us</a>
+				<a href="#" class="col-xs-1" >Feedback</a>
+			</footer>
+		</div>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+  <% end -%>
+
+  
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Log In</button>
+      </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Register</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+
+   <div><%= f.label :username %><br />
+  <%= f.text_field :username %></div>
+
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+	</body>

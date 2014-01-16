@@ -53,4 +53,6 @@ class MoviesController < ApplicationController
 		end
 		redirect_to "/movies/#{params[:movie_id]}"	
 	end
+	def search
+	end
 end

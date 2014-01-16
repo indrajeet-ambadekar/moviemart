@@ -1,6 +1,7 @@
 Moviemart::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   get '/auth/:provider/callback' => 'authentications#create'
+  get '/movies/search' => 'movies#search'
   resources :authentications
   resources :reviews
   resources :movies

@@ -1,0 +1,29 @@
+<div class="statistics">
+			<div class="container">
+				<div class="row stats">
+					<div class="stat-icon"></div>
+					<div class="containts">
+						<div class="charts">
+							<div class="row stats-box">
+							<div class="col-xs-4 ">
+
+								<div class="chart" data-percent="<%= ((((@movie.like).to_f)/(@movie.like+@movie.dislike))*100).round %>" data-col="#24a23e">
+									<span>Like: </span><span class="percent"></span>
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div class="chart" data-percent="<%= ((((@movie.dislike).to_f)/(@movie.like+@movie.dislike))*100).round %>" data-col="#eb3d3d">
+									<span>Dislike: </span><span class="percent"></span>
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div class="chart" data-percent="<%= @movie.rating %>" data-col="#3a6896">
+									<span>Popularity: </span><span class="percent"></span>
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>  <!-- Statistics -->

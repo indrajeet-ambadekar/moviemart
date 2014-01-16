@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111002526) do
+ActiveRecord::Schema.define(version: 20140112001651) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -29,13 +29,11 @@ ActiveRecord::Schema.define(version: 20140111002526) do
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "like"
-    t.integer  "dislike"
-    t.integer  "user_id"
+    t.integer  "like",       default: 1
+    t.integer  "dislike",    default: 1
     t.string   "genre"
+    t.integer  "rating",     default: 0
   end
-
-  add_index "movies", ["user_id"], name: "index_movies_on_user_id", using: :btree
 
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"

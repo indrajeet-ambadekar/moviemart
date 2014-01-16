@@ -87,18 +87,24 @@ body{
 	margin-top: 40px;
 }
 
+.fb-like-clicked{
+	background-image: url("/assets/thumbs-up-green.png");
+}
+.fb-dislike-clicked{
+	background-image: url("/assets/thumbs-down-red.png");
+}
 .fb-like{
 	background-image: url("/assets/thumbs-up.png");
 }
 
-.fb-like:hover{
+.fb-like:hover, .fb-like-clicked:hover{
 	background-image: url("/assets/thumbs-up-hover.png");
 }
 .fb-dislike{
 	background-image: url("/assets/thumbs-down.png");
 }
 
-.fb-dislike:hover{
+.fb-dislike:hover, .fb-dislike-clicked:hover{
 	background-image: url("/assets/thumbs-down-hover.png");
 }
 .fb-share{
@@ -110,7 +116,7 @@ body{
 }
 
 .content{
-	margin-top: 55px;
+	margin-top: -10px;
 }
 .video-icon{
 	display: none;
@@ -311,13 +317,25 @@ body{
 	font-weight: bold;
 	text-align: center;
 	background-color: #ffffff;
-	width: 97%;
-	margin-left: 3%;
+	width: 100%;
 	border-width: 1px;
 	border-style: solid;
 	border-color: #cae4e1;
 	height: 40px;
 	margin-bottom: 2%;
+}
+.text-area{
+	color: #747474;
+	font-family: 'RalewayRegular';
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #ffffff;
+	width: 100%;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #cae4e1;
+	height: 100px;
+	resize: none;
 }
 .rating{
 	height: 250px;

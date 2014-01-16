@@ -1,0 +1,30 @@
+.containts{
+  text-align: "center";
+  padding-top: 50px;
+}
+.chart {
+  position: relative;
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  margin: auto;
+  text-align: center;
+}
+.stats-box{
+  padding-left: 75px;
+}
+.chart canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.percent {
+  display: inline-block;
+  line-height: 150px;
+  z-index: 2;
+}
+.percent:after {
+  content: '%';
+  margin-left: 0.1em;
+  font-size: .8em;
+}

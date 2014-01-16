@@ -1,0 +1,268 @@
+<head>
+	<title>MovieMart</title>
+	<%= javascript_include_tag "jquery-pie" %>
+	<%= javascript_include_tag "jquery-pie-draw" %>
+	<%= javascript_include_tag "easypiechart" %>
+	<%= javascript_include_tag "barchart" %>
+	<%= javascript_include_tag "jquery-typing" %>
+	<%= javascript_include_tag "jqueryanimation" %>
+</head>
+<body>
+<header class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-4">
+						<div class="row">
+							<div class="col-xs-3">
+								<div class="row">
+									<div class="col-xs-2"></div>
+									
+										<%= link_to raw("<div class='col-xs-10 menu-bar text-center'><span class='glyphicon glyphicon-home home-icon'></span></div>"), home_path %>
+									
+								</div>
+							</div>
+							<div class="col-xs-9 logo-text">
+								<%= link_to "Moviemart", home_path, :class=>'logo-text' %>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-4 search-bar">
+						<div class="input-group">
+ 							 <input type="text" class="form-control search-input">
+  							<span class="input-group-addon search-lens-box"><span class="glyphicon glyphicon-search search-lens"></span></span>
+						</div>
+					</div> <!-- search bar -->
+					<div class="col-xs-4">
+						<div class="row">
+							<div class="col-xs-9 text-center social">
+							<% if user_signed_in? %>
+								<%= raw("<span class='fa social-icons username'>#{current_user.username || current_user.email}</span>") %>
+							<% else %>
+								<%= link_to raw("<span class='fa fa-facebook social-icons'></span>"), "/auth/facebook" %>
+								<%= link_to raw("<span class='fa fa-twitter social-icons'></span>"), "#" %>
+								<%= link_to raw("<span class='fa fa-google-plus social-icons'></span>"), "/auth/gplus" %>
+							<% end %>
+							</div> <!-- Social icons -->
+							<div class="col-xs-3 user">
+							<% if user_signed_in? %>
+								<%= link_to raw("<span class='glyphicon glyphicon-log-out social-icons'></span>"), destroy_user_session_path, method: :delete %>
+							<% else %>
+								<a href="#"><span class='glyphicon glyphicon-log-in social-icons' data-toggle='modal' data-target='#myModal'></span></a>
+							<% end %>
+							</div>
+						</div>
+					</div> <!-- User  -->
+				</div>
+			</div>
+		</header> <!-- header -->
+		<div class="search-result">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-4 movie-unit">
+						<div class="movie-thumb">
+							<img src="/assets/thumb.png">
+						</div>
+						<div class="movie-title">
+							<a href="#"><span>The dark knight</span></a>
+						</div>
+						<div class="movie-rate">
+							<div class="row">
+								<div class="col-xs-4">
+									<div class="row">
+										<div class="col-xs-6">
+											<span class="glyphicon glyphicon-thumbs-up thumb-like"></span>
+										</div>
+										<div class="col-xs-6 clear-left-pad">
+											<span class="thumb-like">50%</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-4">
+									<div class="row">
+										<div class="col-xs-6">
+											<span class="glyphicon glyphicon-thumbs-down thumb-dislike"></span>
+										</div>
+										<div class="col-xs-6 clear-left-pad">
+											<span class="thumb-dislike">50%</span>
+										</div>
+									</div>
+								</div>
+							
+							</div>
+						</div>
+						<a href="#">
+							<label class="movie-view">
+							 View details <span class="glyphicon glyphicon-chevron-right"></span>
+							</label>
+						</a>
+					</div>
+					<div class="col-xs-4 movie-unit">
+						<div class="movie-thumb">
+							<img src="/assets/thumb.png">
+						</div>
+						<div class="movie-title">
+							<a href="#"><span>The dark knight</span></a>
+						</div>
+						<div class="movie-rate">
+							<div class="row">
+								<div class="col-xs-4">
+									<div class="row">
+										<div class="col-xs-6">
+											<span class="glyphicon glyphicon-thumbs-up thumb-like"></span>
+										</div>
+										<div class="col-xs-6 clear-left-pad">
+											<span class="thumb-like">50%</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-4">
+									<div class="row">
+										<div class="col-xs-6">
+											<span class="glyphicon glyphicon-thumbs-down thumb-dislike"></span>
+										</div>
+										<div class="col-xs-6 clear-left-pad">
+											<span class="thumb-dislike">50%</span>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<a href="#">
+							<label class="movie-view">
+							 View details <span class="glyphicon glyphicon-chevron-right"></span>
+							</label>
+						</a>
+					</div>
+					<div class="col-xs-4 movie-unit">
+						<div class="movie-thumb">
+							<img src="/assets/thumb.png">
+						</div>
+						<div class="movie-title">
+							<a href="#"><span>The dark knight</span></a>
+						</div>
+						<div class="movie-rate">
+							<div class="row">
+								<div class="col-xs-4">
+									<div class="row">
+										<div class="col-xs-6">
+											<span class="glyphicon glyphicon-thumbs-up thumb-like"></span>
+										</div>
+										<div class="col-xs-6 clear-left-pad">
+											<span class="thumb-like">50%</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-4">
+									<div class="row">
+										<div class="col-xs-6">
+											<span class="glyphicon glyphicon-thumbs-down thumb-dislike"></span>
+										</div>
+										<div class="col-xs-6 clear-left-pad">
+											<span class="thumb-dislike">50%</span>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<a href="#">
+							<label class="movie-view">
+							 View details <span class="glyphicon glyphicon-chevron-right"></span>
+							</label>
+						</a>
+					</div>
+					<div class="col-xs-4 movie-unit">
+						<div class="movie-thumb">
+							<img src="/assets/thumb.png">
+						</div>
+						<div class="movie-title">
+							<a href="#"><span>The dark knight</span></a>
+						</div>
+						<div class="movie-rate">
+							<div class="row">
+								<div class="col-xs-4">
+									<div class="row">
+										<div class="col-xs-6">
+											<span class="glyphicon glyphicon-thumbs-up thumb-like"></span>
+										</div>
+										<div class="col-xs-6 clear-left-pad">
+											<span class="thumb-like">50%</span>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-4">
+									<div class="row">
+										<div class="col-xs-6">
+											<span class="glyphicon glyphicon-thumbs-down thumb-dislike"></span>
+										</div>
+										<div class="col-xs-6 clear-left-pad">
+											<span class="thumb-dislike">50%</span>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+						<a href="#">
+							<label class="movie-view">
+							 View details <span class="glyphicon glyphicon-chevron-right"></span>
+							</label>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bar">
+     		<div class="container">
+			<div class="row footer">
+				<div class="col-md-12 copy-text">
+					<span class="copyright">
+						<img  src="/assets/copy.png">
+						Copyrights 2014 <a href="#">@codingmart.com</a>
+					</span>	
+					<span class="footer-text">
+						<span class="foot-line pull-right">
+							<a href="#" class="border-side">Home</a>
+
+							<a href="#" class="border-side">About us</a>
+
+							<a href="#">Contact us</a>
+
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Sign In</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email, :autofocus => true %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+  <% end -%>
+
+  
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Log In</button>
+      </div>
+      <% end %>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>

@@ -140,6 +140,7 @@
 	border-style: solid;
 	border-color: #cae4e1;
 	height: 100px;
+	resize: none;
 }
 .rating{
 	height: 250px;
